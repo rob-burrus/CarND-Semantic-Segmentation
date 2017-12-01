@@ -1,36 +1,32 @@
 # Semantic Segmentation
-### Introduction
-In this project, you'll label the pixels of a road in images using a Fully Convolutional Network (FCN).
 
-### Setup
-##### Frameworks and Packages
-Make sure you have the following is installed:
- - [Python 3](https://www.python.org/)
- - [TensorFlow](https://www.tensorflow.org/)
- - [NumPy](http://www.numpy.org/)
- - [SciPy](https://www.scipy.org/)
-##### Dataset
-Download the [Kitti Road dataset](http://www.cvlibs.net/datasets/kitti/eval_road.php) from [here](http://www.cvlibs.net/download.php?file=data_road.zip).  Extract the dataset in the `data` folder.  This will create the folder `data_road` with all the training a test images.
+### Overview
+Fully Convolutional Network (FCN) based on the VGG-16 image classifier for performing semantic segmentation to identify drivable road area from images taken from a front-facing camera on a car. Images are taken from the [Kitti Road dataset](http://www.cvlibs.net/datasets/kitti/eval_road.php) donwloadable [here](http://www.cvlibs.net/download.php?file=data_road.zip).  
 
-### Start
-##### Implement
-Implement the code in the `main.py` module indicated by the "TODO" comments.
-The comments indicated with "OPTIONAL" tag are not required to complete.
-##### Run
-Run the following command to run the project:
-```
-python main.py
-```
-**Note** If running this in Jupyter Notebook system messages, such as those regarding test status, may appear in the terminal rather than the notebook.
+### Architecture
+There are several unique aspects to a Fully Convolutional Network that are implemented in this model:
+* Encoder - VGG-16 model pre-trained on ImageNet extracts features from the image. Instead of a fully connected output layer, as is typical in a fully connected CNN, the fully connected layer is replaced by a 1x1 convolutional layer. The output tensor will remain 4-D instead of flattening to 2-D, thus retaining spatial information
+* Decoder - Use transposed convolutions to upsample the output of the 1x1 convolutional layer to the size of the original image. A transposed convolution is essentially a reverse forward convolution. 
+* Add skip connections using the output of the 3rd, 4th, and 7th VGG layers. The skip connections allow the decoder to use information from multiple resolutions and allow for a more precise segmentation decisions. 
 
-### Submission
-1. Ensure you've passed all the unit tests.
-2. Ensure you pass all points on [the rubric](https://review.udacity.com/#!/rubrics/989/view).
-3. Submit the following in a zip file.
- - `helper.py`
- - `main.py`
- - `project_tests.py`
- - Newest inference images from `runs` folder
- 
- ## How to write a README
-A well written README file can enhance your project and portfolio.  Develop your abilities to create professional README files by completing [this free course](https://www.udacity.com/course/writing-readmes--ud777).
+#### Hyperparameters
+* Loss Function = cross-entropy
+* Optimizer = AdamOptimizer
+* keep_prob = 0.75
+* learning_rate = 0.0001
+* epochs = 25
+* batch_size = 2
+
+### Results
+Cross-Entropy Loss = 0.00029
+
+[sample](./output/1.png)
+[sample](./output/2.png)
+[sample](./output/3.png)
+[sample](./output/4.png)
+[sample](./output/5.png)
+[sample](./output/6.png)
+[sample](./output/7.png)
+[sample](./output/8.png)
+[sample](./output/9.png)
+[sample](./output/10.png)
