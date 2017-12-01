@@ -20,13 +20,13 @@ There are several unique aspects to a Fully Convolutional Network that are imple
 ### Results
 Cross-Entropy Loss = 0.00029
 
-[sample](./output/1.png)
-[sample](./output/2.png)
-[sample](./output/3.png)
-[sample](./output/4.png)
-[sample](./output/5.png)
-[sample](./output/6.png)
-[sample](./output/7.png)
-[sample](./output/8.png)
-[sample](./output/9.png)
-[sample](./output/10.png)
+![sample](./output/1.png)
+![sample](./output/2.png)
+![sample](./output/3.png)
+![sample](./output/4.png)
+![sample](./output/5.png)
+![sample](./output/6.png)
+![sample](./output/7.png)
+![sample](./output/8.png)
+![sample](./output/9.png)
+![sample](./output/10.png)
